@@ -6,6 +6,8 @@ module S3SwfUpload
       success                = options[:success]  || ''
       failed                 = options[:failed]  || ''
       selected               = options[:selected]  || ''
+      cleared                = options[:cleared] || ''
+      removed                = options[:removed] || ''
       canceled               = options[:canceled] || ''
       info                   = options[:info] || ''
       prefix                 = options[:prefix] || ''
@@ -51,6 +53,12 @@ module S3SwfUpload
               },
               onCancel:  function(status){
                 #{canceled}
+              },
+              onClear: function(){
+                #{clear}
+              },
+              onRemove: function(){
+                #{remove}
               }
             });
         </script>

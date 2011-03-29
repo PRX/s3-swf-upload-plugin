@@ -105,6 +105,8 @@ package org.prx.uploader {
             s3onSelectedCall = "s3_swf.onSelected";
             s3onInfoCall     = "s3_swf.onInfo";
             s3onCancelCall   = "s3_swf.onCancel";
+            s3onClearCall    = "s3_swf.onClear";
+            s3onRemoveCall   = "s3_swf.onRemove";
             
 	        ExternalInterface.call(s3onInfoCall, initialMessage);
 
@@ -364,12 +366,14 @@ package org.prx.uploader {
         //Remove Selected File From Queue
         private function removeSelectedFileFromQueue(event:Event):void{
             if (_filesDataGrid.selectedIndex >= 0){
+                ExternalInterface.call(s3onRemoveCall);
                 _files.removeItemAt( _filesDataGrid.selectedIndex);
             }
         }
 
 		 //Remove all files from the upload cue;
         private function clearFileQueue(event:Event):void{
+            ExternalInterface.call(s3onClearCall);
             _files.removeAll();
         }
 
