@@ -25,7 +25,10 @@ function s3_swf_init(id, options)
   onFailed        = (options.onFailed == undefined) ? function(){} : options.onFailed;
   onInfo          = (options.onInfo == undefined) ? function(){} : options.onInfo;
   onCancel        = (options.onCancel == undefined) ? function(){} : options.onCancel;
-  
+  onRemove        = (options.onRemove == undefined) ? function(){} : options.onRemove;
+  onClear         = (options.onClear == undefined) ? function(){} : options.onClear;
+  onStart         = (options.onStart == undefined) ? function(){} : options.onStart;
+  onComplete      = (options.onComplete == undefined) ? function(){} : options.onComplete;
 
   var flashvars = {};
   var params = {};
@@ -45,7 +48,11 @@ function s3_swf_init(id, options)
     onFailed: onFailed,
     onSelected: onFileSelected, 
     onInfo: onInfo,
-    onCancel: onCancel
+    onCancel: onCancel,
+    onRemove: onRemove,
+    onClear: onClear,
+    onStart: onStart,
+    onComplete: onComplete
   }
 
   return(s3_swf);
