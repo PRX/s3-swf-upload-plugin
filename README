@@ -72,6 +72,8 @@ Usage
             :failed => 'alert("failed: " + status);',
             :info => '$("#upload-messages").html(status);',
             :prefix => "public/attachment",
+            :cleared => "alert('removed all pending uploads!')",
+            :removed => "alert('removed a pending upload!')",
             :initial_message=> 'Click "Browse..." to find files to upload.')
     %>
     </div>
