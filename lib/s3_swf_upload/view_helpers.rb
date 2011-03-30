@@ -60,7 +60,7 @@ module S3SwfUpload
                 #{cleared}
               },
               onRemove: function(){
-                #{remove}
+                #{removed}
               },
               onStart: function(){
                 #{uploadStart}
