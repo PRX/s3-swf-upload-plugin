@@ -12,7 +12,8 @@
 
     <mx:VBox width="385" height="150">
 
-        <mx:DataGrid id="filesDataGrid" 
+        <mx:DataGrid id="filesDataGrid"
+                     height="90"
                      left="0" 
                      right="0" 
                      bottom="30" 
