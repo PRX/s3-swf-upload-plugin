@@ -66,6 +66,8 @@ package org.prx.uploader {
         public var s3onSelectedCall:String;
         public var s3onInfoCall:String;
         public var s3onCancelCall:String;
+        public var s3onRemoveCall:String;
+        public var s3onClearCall:String;
 
         public function MultipleFileS3Uploader(signatureUrl:String,
                                                initialMessage:String,
