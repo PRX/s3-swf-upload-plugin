@@ -11,6 +11,8 @@ module S3SwfUpload
       canceled               = options[:canceled] || ''
       info                   = options[:info] || ''
       prefix                 = options[:prefix] || ''
+      uploadStart            = options[:started] || ''
+      uploadComplete         = options[:completed] || ''
       upload                 = options[:upload] || 'Upload'
       initial_message        = options[:initial_message] || 'Select file to upload...'      
       max_file_size          = options[:max_file_size] || '524288000'
@@ -59,6 +61,12 @@ module S3SwfUpload
               },
               onRemove: function(){
                 #{remove}
+              },
+              onStart: function(){
+                #{uploadStart}
+              },
+              onComplete: function(){
+                #{uploadComplete}
               }
             });
         </script>

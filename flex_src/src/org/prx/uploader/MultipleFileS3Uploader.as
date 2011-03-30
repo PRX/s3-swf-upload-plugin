@@ -68,6 +68,8 @@ package org.prx.uploader {
         public var s3onCancelCall:String;
         public var s3onRemoveCall:String;
         public var s3onClearCall:String;
+        public var s3onStartCall:String;
+        public var s3onCompleteCall:String;
 
         public function MultipleFileS3Uploader(signatureUrl:String,
                                                initialMessage:String,
@@ -109,6 +111,8 @@ package org.prx.uploader {
             s3onCancelCall   = "s3_swf.onCancel";
             s3onClearCall    = "s3_swf.onClear";
             s3onRemoveCall   = "s3_swf.onRemove";
+            s3onStartCall    = "s3_swf.onStart";
+            s3onCompleteCall = "s3_swf.onComplete";
             
 	        ExternalInterface.call(s3onInfoCall, initialMessage);
 
@@ -268,7 +272,6 @@ package org.prx.uploader {
 
         // called after the file is opened before upload    
         private function s3OpenHandler(event:Event):void{
-	        ExternalInterface.call(s3onInfoCall, "");
             trace(event);
             trace('openHandler triggered');
             _files;
@@ -310,10 +313,11 @@ package org.prx.uploader {
             trace(event);
             _files.removeItemAt(0);
             if (_files.length > 0){
-            	_totalbytes = 0;
+            	  _totalbytes = 0;
                 uploadFiles(null);
             } else {
                 setupCancelButton(false);
+                ExternalInterface.call(s3onCompleteCall);
                  _uploadProgressBar.label = "Uploads complete";
      	        ExternalInterface.call(s3onInfoCall, "All uploads complete");
                 /* not sure these next 2 lines are necessary... */
@@ -357,6 +361,9 @@ package org.prx.uploader {
         }
 
         private function uploadFiles(event:Event):void{
+            if (event != null) {
+              ExternalInterface.call(s3onStartCall);
+            }
             if (_files.length > 0){
      	        ExternalInterface.call(s3onInfoCall, 'Initiating...');
                 _file = FileReference(_files.getItemAt(0));
