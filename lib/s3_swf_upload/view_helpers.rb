@@ -57,7 +57,7 @@ module S3SwfUpload
                 #{canceled}
               },
               onClear: function(){
-                #{clear}
+                #{cleared}
               },
               onRemove: function(){
                 #{remove}
